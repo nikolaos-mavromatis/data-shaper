@@ -1,2 +1,8 @@
 name: sales
-output_path: data/processed/sales.csv
+extraction:
+  type: csv
+  source: data/raw/sales_raw.csv
+  options:
+    delimiter: ","
+    encoding: "utf-8"
+output_path: data/processed/sales_processed.csv

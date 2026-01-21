@@ -49,7 +49,7 @@ def setup_logger(
             handler = RichHandler(
                 console=console,
                 show_time=True,
-                show_path=False,
+                show_path=True,
                 rich_tracebacks=True,
                 tracebacks_show_locals=True,
                 markup=True,

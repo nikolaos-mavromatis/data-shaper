@@ -11,3 +11,15 @@ class ConfigurationError(PipelineError):
     """Raised when configuration is invalid."""
 
     pass
+
+
+class ExtractionError(PipelineError):
+    """Raised when data extraction fails."""
+
+    pass
+
+
+class RegistryError(PipelineError):
+    """Raised when plugin registration fails."""
+
+    pass
