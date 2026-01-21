@@ -1,7 +1,7 @@
 name: sales
 extraction:
   type: csv
-  source: data/raw/sales_raw.csv
+  source: data/raw/sales.csv
   options:
     delimiter: ","
     encoding: "utf-8"
