@@ -90,7 +90,7 @@ class ExtractorsRegistry:
             ]:
                 continue
 
-            module_name = f"src.extractors.{py_file.stem}"
+            module_name = f"data_shaper.extractors.{py_file.stem}"
 
             try:
                 module = importlib.import_module(module_name)
@@ -108,4 +108,5 @@ class ExtractorsRegistry:
 
 
 # Global registry instance
-extractor_registry = ExtractorsRegistry()
+extractors_registry = ExtractorsRegistry()
+extractors_registry.auto_discover()
