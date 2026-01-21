@@ -3,12 +3,12 @@ name = "data-shaper"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-authors = [
-    { name = "Nikolaos Mavromatis", email = "nck.mavromatis@gmail.com" }
-]
+authors = [{ name = "Nikolaos Mavromatis", email = "nck.mavromatis@gmail.com" }]
 requires-python = ">=3.10"
 dependencies = [
     "dotenv>=0.9.9",
+ "pandas>=2.3.3",
+ "pyyaml>=6.0.3",
 ]
 
 [project.scripts]
