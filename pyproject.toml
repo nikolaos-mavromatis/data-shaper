@@ -7,7 +7,12 @@ authors = [
     { name = "Nikolaos Mavromatis", email = "nck.mavromatis@gmail.com" }
 ]
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "dotenv>=0.9.9",
+]
+
+[project.scripts]
+data-shaper = "data_shaper:main"
 
 [build-system]
 requires = ["hatchling"]

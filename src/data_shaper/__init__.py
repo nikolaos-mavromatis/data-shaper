@@ -1,2 +1,2 @@
-def hello() -> str:
-    return "Hello from data-shaper!"
+def main() -> None:
+    print("Hello from data-shaper!")
