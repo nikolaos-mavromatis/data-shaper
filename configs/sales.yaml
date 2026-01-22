@@ -11,6 +11,12 @@ transformations:
       mapping:
         "product": "product_id"
         "quantity_sold": "quantity"
+  - type: fix_types
+    params:
+      columns:
+        "sale_date": "datetime64[ns]"
+        "price": "float"
+        "quantity": "int"
 exportation:
   type: csv
   destination: data/processed/sales_processed.csv
