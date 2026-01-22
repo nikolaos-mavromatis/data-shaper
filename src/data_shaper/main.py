@@ -6,6 +6,7 @@ from data_shaper.pipeline.orchestrator import PipelineOrchestrator
 from data_shaper.config.loader import ConfigLoader
 from data_shaper.utils.logger import setup_logger
 from data_shaper.extractors.registry import extractors_registry
+from data_shaper.exporters.registry import exporters_registry
 
 logger = setup_logger("data-pipeline")
 
@@ -47,7 +48,9 @@ def main() -> int:
         logger.setLevel(args.log_level)
 
     config_loader = ConfigLoader(args.config_path)
-    orchestrator = PipelineOrchestrator(extractors_registry=extractors_registry)
+    orchestrator = PipelineOrchestrator(
+        extractors_registry=extractors_registry, exporters_registry=exporters_registry
+    )
 
     try:
         logger.info(f"Loading configuration from {args.config_path}")

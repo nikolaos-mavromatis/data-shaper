@@ -30,10 +30,10 @@ class CSVExporter(BaseExporter):
             ExportError: If CSV file cannot be written
         """
         try:
-            logger.info(f"Exporting CSV to: {config['output_path']}")
+            logger.info(f"Exporting CSV to: {config['destination']}")
 
             data.to_csv(
-                config["output_path"],
+                config["destination"],
                 index=config["options"].get("index", False),
                 sep=config["options"].get("delimiter", ","),
                 encoding=config["options"].get("encoding", "utf-8"),
@@ -44,8 +44,8 @@ class CSVExporter(BaseExporter):
             )
 
         except FileNotFoundError:
-            raise ExportError(f"CSV file not found: {config['output_path']}")
+            raise ExportError(f"CSV file not found: {config['destination']}")
         except pd.errors.EmptyDataError:
-            raise ExportError(f"CSV file is empty: {config['output_path']}")
+            raise ExportError(f"CSV file is empty: {config['destination']}")
         except Exception as e:
-            raise ExportError(f"Failed to export CSV to {config['output_path']}: {e}")
+            raise ExportError(f"Failed to export CSV to {config['destination']}: {e}")
