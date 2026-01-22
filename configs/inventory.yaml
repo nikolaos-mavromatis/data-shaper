@@ -2,4 +2,7 @@ name: inventory
 extraction:
   type: json
   source: data/raw/inventory.json
-output_path: data/processed/inventory_processed.json
+exportation:
+  type: csv
+  destination: data/processed/inventory_processed.csv
+  options: {} # FIXME: The user should be able to not pass an empty options dict

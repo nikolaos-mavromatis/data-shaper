@@ -2,4 +2,8 @@ name: product_catalog
 extraction:
   type: parquet
   source: data/raw/products.parquet
-output_path: data/processed/products_processed.parquet
+  options: {} # FIXME: The user should be able to not pass an empty options dict
+exportation:
+  type: csv
+  destination: data/processed/products_processed.csv
+  options: {} # FIXME: The user should be able to not pass an empty options dict

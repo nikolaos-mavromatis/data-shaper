@@ -5,4 +5,7 @@ extraction:
   options:
     delimiter: ","
     encoding: "utf-8"
-output_path: data/processed/sales_processed.csv
+exportation:
+  type: csv
+  destination: data/processed/sales_processed.csv
+  options: {} # FIXME: The user should be able to not pass an empty options dict
