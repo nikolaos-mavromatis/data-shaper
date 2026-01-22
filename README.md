@@ -1,7 +1,10 @@
-# Data Shaper
+# 🫧 Data Shaper
+
 ![Static Badge](https://img.shields.io/badge/Pandas-2C2D72?style=for-the-badge&logo=pandas&logoColor=white)
 
 A config-first pipeline for bringing a dataset into the desired shape.
+
+## 🔠 Before you start
 
 **Do we need this?**
 
@@ -20,7 +23,7 @@ You should probably look elsewhere if :
 2. your dataset consists of numerous columns,
 3. you don't want clean data
 
-## Main Ideas
+## 💡 Main Ideas
 
 ✔ The user defines the configuration for processing a specific dataset, consisting of : _extraction_, _transformation_, and _exportation_ steps. 
     
