@@ -25,6 +25,12 @@ class RegistryError(PipelineError):
     pass
 
 
+class TransformationError(PipelineError):
+    """Raised when data transformation fails."""
+
+    pass
+
+
 class ExportError(PipelineError):
     """Raised when data export fails."""
 
