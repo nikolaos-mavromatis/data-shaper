@@ -1,8 +1,8 @@
 # 🫧 Data Shaper
 
-![Static Badge](https://img.shields.io/badge/Pandas-2C2D72?style=for-the-badge&logo=pandas&logoColor=white)
-
 A config-first pipeline for bringing a dataset into the desired shape.
+
+![Static Badge](https://img.shields.io/badge/Pandas-2C2D72?style=for-the-badge&logo=pandas&logoColor=white)
 
 ## 🔠 Before you start
 
