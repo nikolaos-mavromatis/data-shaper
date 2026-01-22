@@ -4,6 +4,7 @@ from typing import Any, Dict, Optional
 
 import pandas as pd
 from data_shaper.extractors.registry import ExtractorsRegistry
+from data_shaper.transformers.registry import TransformersRegistry
 from data_shaper.exporters.registry import ExportersRegistry
 from data_shaper.utils.exceptions import PipelineError
 from data_shaper.utils.logger import get_logger
@@ -18,10 +19,12 @@ class PipelineOrchestrator:
     def __init__(
         self,
         extractors_registry: ExtractorsRegistry,
+        transformers_registry: TransformersRegistry,
         exporters_registry: ExportersRegistry,
     ) -> None:
         """Initialize the pipeline orchestrator."""
         self.extractors = extractors_registry
+        self.transformers = transformers_registry
         self.exporters = exporters_registry
 
     def run_pipeline(
@@ -44,7 +47,7 @@ class PipelineOrchestrator:
         logger.info(f"Processing dataset...")
 
         self.df = self._extract_data(config)
-
+        self.df = self._apply_transformations(config)
         self._export_data(config)
 
         return self.df
@@ -68,6 +71,33 @@ class PipelineOrchestrator:
             raise PipelineError(
                 f"Extraction failed for dataset '{config['name']}': {e}"
             )
+
+    def _apply_transformations(self, config: Dict[str, Any]) -> pd.DataFrame:
+        """
+        Apply transformation steps to DataFrame.
+
+        Args:
+            config: Dataset configuration with transformations
+
+        Returns:
+            Transformed DataFrame
+        """
+        for i, step in enumerate(config["transformations"]):
+            try:
+                logger.debug(
+                    f"Applying transformation {i + 1}/{len(config['transformations'])}: "
+                    f"{step['type']}"
+                )
+
+                transformer = self.transformers.get(step["type"])
+                df = transformer.transform(self.df, step["params"])
+
+                return df
+
+            except Exception as e:
+                raise PipelineError(
+                    f"Transformation '{step['type']}' failed for dataset '{config['name']}': {e}"
+                )
 
     def _export_data(
         self,

@@ -12,7 +12,7 @@ from data_shaper.transformers.base import BaseTransformer
 logger = get_logger(__name__)
 
 
-class TransformerRegistry:
+class TransformersRegistry:
     """Registry for managing transformer plugins."""
 
     def __init__(self) -> None:
@@ -92,7 +92,7 @@ class TransformerRegistry:
             ]:
                 continue
 
-            module_name = f"src.transformers.{py_file.stem}"
+            module_name = f"data_shaper.transformers.{py_file.stem}"
 
             try:
                 module = importlib.import_module(module_name)
@@ -110,5 +110,5 @@ class TransformerRegistry:
 
 
 # Global registry instance
-transformer_registry = TransformerRegistry()
-transformer_registry.auto_discover()
+transformers_registry = TransformersRegistry()
+transformers_registry.auto_discover()
