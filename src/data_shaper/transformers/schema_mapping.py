@@ -4,9 +4,9 @@ from typing import Any, Dict, List
 
 import pandas as pd
 
-from ..utils.exceptions import TransformationError
-from ..utils.logger import get_logger
-from .base import BaseTransformer
+from data_shaper.utils.exceptions import TransformationError
+from data_shaper.utils.logger import get_logger
+from data_shaper.transformers.base import BaseTransformer
 
 logger = get_logger(__name__)
 
