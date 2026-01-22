@@ -4,15 +4,16 @@ import argparse
 import sys
 from data_shaper.pipeline.orchestrator import PipelineOrchestrator
 from data_shaper.config.loader import ConfigLoader
-from data_shaper.utils.logger import setup_logger
+from data_shaper.utils.logger import log_section, setup_logger
 from data_shaper.extractors.registry import extractors_registry
 from data_shaper.transformers.registry import transformers_registry
 from data_shaper.exporters.registry import exporters_registry
 
-logger = setup_logger("data-pipeline")
+logger = setup_logger("data_shaper")
 
 
 def run_pipeline(args: argparse.Namespace) -> int:
+    log_section(logger, "Setup Pipeline")
     config_loader = ConfigLoader(args.config_path)
     orchestrator = PipelineOrchestrator(
         extractors_registry=extractors_registry,

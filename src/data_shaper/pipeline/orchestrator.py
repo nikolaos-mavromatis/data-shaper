@@ -7,7 +7,7 @@ from data_shaper.extractors.registry import ExtractorsRegistry
 from data_shaper.transformers.registry import TransformersRegistry
 from data_shaper.exporters.registry import ExportersRegistry
 from data_shaper.utils.exceptions import PipelineError
-from data_shaper.utils.logger import get_logger
+from data_shaper.utils.logger import get_logger, log_section, log_success
 
 
 logger = get_logger(__name__)
@@ -44,11 +44,17 @@ class PipelineOrchestrator:
         Raises:
             PipelineError: If pipeline execution fails
         """
-        logger.info(f"Processing dataset...")
+        logger.info(f"Launched pipeline for dataset '{config['name']}'...")
 
+        log_section(logger, "Data Extraction")
         self.df = self._extract_data(config)
-        self.df = self._apply_transformations(config)
+        if config.get("transformations"):
+            log_section(logger, "Data Transformation")
+            self.df = self._apply_transformations(config)
+        log_section(logger, "Data Exportation")
         self._export_data(config)
+
+        log_success(logger, "Pipeline completed successfully.")
 
         return self.df
 
@@ -91,13 +97,11 @@ class PipelineOrchestrator:
 
                 transformer = self.transformers.get(step["type"])
                 df = transformer.transform(self.df, step["params"])
-
-                return df
-
             except Exception as e:
                 raise PipelineError(
                     f"Transformation '{step['type']}' failed for dataset '{config['name']}': {e}"
                 )
+        return df
 
     def _export_data(
         self,

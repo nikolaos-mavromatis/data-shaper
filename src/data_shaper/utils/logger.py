@@ -83,17 +83,17 @@ def get_logger(name: str) -> logging.Logger:
 def log_success(logger: logging.Logger, message: str) -> None:
     """Log a success message with rich formatting."""
     if RICH_AVAILABLE:
-        logger.info(f"[success]✓[/success] {message}")
+        logger.info(f"\n[success]✓[/success] {message}")
     else:
-        logger.info(f"✓ {message}")
+        logger.info(f"\n✓ {message}")
 
 
 def log_error(logger: logging.Logger, message: str) -> None:
     """Log an error message with rich formatting."""
     if RICH_AVAILABLE:
-        logger.error(f"[error]✗[/error] {message}")
+        logger.error(f"\n[error]✗[/error] {message}")
     else:
-        logger.error(f"✗ {message}")
+        logger.error(f"\n✗ {message}")
 
 
 def log_section(logger: logging.Logger, title: str) -> None:
