@@ -23,3 +23,9 @@ class RegistryError(PipelineError):
     """Raised when plugin registration fails."""
 
     pass
+
+
+class ExportError(PipelineError):
+    """Raised when data export fails."""
+
+    pass
