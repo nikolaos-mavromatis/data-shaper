@@ -1,0 +1,5 @@
+name: inventory
+extraction:
+  type: json
+  source: data/raw/inventory.json
+output_path: data/processed/inventory_processed.json
