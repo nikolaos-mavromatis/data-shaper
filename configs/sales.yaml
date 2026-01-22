@@ -5,6 +5,12 @@ extraction:
   options:
     delimiter: ","
     encoding: "utf-8"
+transformations:
+  - type: rename_columns
+    params:
+      mapping:
+        "product": "product_id"
+        "quantity_sold": "quantity"
 exportation:
   type: csv
   destination: data/processed/sales_processed.csv
